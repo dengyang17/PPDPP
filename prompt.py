@@ -66,7 +66,7 @@ def CIMAMessages(case, role, conversation, action=None):
 
 def CBMessages(case, role, conversation, action=None):
     if role == 'system':
-        messages = [{"role":"system", "content":"Now enter the role-playing mode. In the following conversation, you will play as a buyer in a price bargaining game."}, {"role":"Seller", "content": "You are the buyer who is trying to buy the %s with the price of %s. Product description: %s\nPlease reply with only one short and succinct sentence. %s Now start the game." % (case['item_name'], case['buyer_price'], case['buyer_item_description'], action)}]
+        messages = [{"role":"system", "content":"Now enter the role-playing mode. In the following conversation, you will play as a buyer in a price bargaining game."}, {"role":"Seller", "content": "You are the buyer who is trying to buy the %s with the price of %s. Product description: %s\nPlease reply with only one short and succinct sentence. %s Now start the game." % (case['item_name'], case['buyer_price'], case['buyer_item_description'], CBAct[action])}]
         messages.extend(conversation)
     elif role == 'user':
         messages = [{"role":"system", "content":"Now enter the role-playing mode. In the following conversation, you will play as a seller in a price bargaining game."}, {"role":"Buyer", "content": "You are the seller who is trying to sell the %s with the price of %s. Product description: %s\nPlease reply with only one short and succinct sentence. Are you ready to play the game?" % (case['item_name'], case['seller_price'], case['seller_item_description'])}, {"role":"Seller", "content":"Yes, I'm ready to play the game!"}]
